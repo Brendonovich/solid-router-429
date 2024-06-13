@@ -10,8 +10,10 @@ export default function Home() {
   const asyncThing = createAsync(() => serverApiCallThrow());
 
   return (
-    <Show when={asyncThing()}>
-      <div>boo!</div>
-    </Show>
+    <ErrorBoundary fallback="Error">
+      <Show when={asyncThing()}>
+        <div>boo!</div>
+      </Show>
+    </ErrorBoundary>
   );
 }
